@@ -39,7 +39,7 @@ manchester_data = pd.read_csv("manchester_missing_long_lat.csv")
 
 # Use ThreadPoolExecutor to make requests in parallel
 compiled_crime_data = []
-with ThreadPoolExecutor(max_workers=11) as executor:
+with ThreadPoolExecutor(max_workers=10) as executor:
     future_to_row = {
         executor.submit(fetch_crime_data, row): row
         for index, row in manchester_data.iterrows()
