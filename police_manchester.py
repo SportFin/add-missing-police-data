@@ -58,9 +58,9 @@ with ThreadPoolExecutor(max_workers=10) as executor:
                 "LSOA code": "",
                 "LSOA name": "",
                 "Crime type": crime["category"],
-                "Last outcome category": crime.get("outcome_status", {}).get(
-                    "category", ""
-                ),
+                "Last outcome category": crime["outcome_status"]["category"]
+                if crime.get("outcome_status")
+                else "",
                 "Context": crime.get("context", ""),
             }
             compiled_crime_data.append(crime_entry)
