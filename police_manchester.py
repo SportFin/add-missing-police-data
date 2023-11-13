@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 def fetch_crime_data(row):
-    api_url = f"https://data.police.uk/api/crimes-street/all-crime?date=2023-02&lat={row['latitude']}&lng={row['longitude']}"
+    api_url = f"https://data.police.uk/api/crimes-street/all-crime?date=2023-09&lat={row['latitude']}&lng={row['longitude']}"
     try:
         response = requests.get(api_url, timeout=10)
         if response.status_code == 200:
@@ -69,7 +69,7 @@ with ThreadPoolExecutor(max_workers=10) as executor:
 compiled_crime_df = pd.DataFrame(compiled_crime_data)
 
 # Save the compiled data to a CSV file
-compiled_crime_df.to_csv("compiled_crime_data_02.csv", index=False)
+compiled_crime_df.to_csv("compiled_crime_data_09.csv", index=False)
 
 # Print summary
 print(f"Total rows in the output file: {compiled_crime_df.shape[0]}")
